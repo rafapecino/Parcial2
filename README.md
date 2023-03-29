@@ -13,8 +13,8 @@ Algunas de las características más importantes de la programación orientada a
 tipo?  
 
  La visibilidad en programación orientada a objetos se refiere al nivel de acceso que tiene una variable o método desde distintos lugares del programa.
- En general, existen tres tipos de visibilidad que se utilizan en la mayoría de los lenguajes de programación:
-**Public:** Las variables y métodos con visibilidad pública pueden ser accedidos desde cualquier parte del programa.  
+ En general, existen tres tipos de visibilidad que se utilizan en la mayoría de los lenguajes de programación:  
+ **Public:** Las variables y métodos con visibilidad pública pueden ser accedidos desde cualquier parte del programa.  
 **Private:** Las variables y métodos con visibilidad privada sólo pueden ser accedidos desde dentro de la misma clase  
 **Protected:** Las variables y métodos con visibilidad protegida son similares a los privados, pero permiten el acceso a las subclases o clases hijas  
 En general, se recomienda utilizar la visibilidad más restrictiva posible, es decir, la más privada, y sólo utilizar la visibilidad pública cuando sea necesario para 
