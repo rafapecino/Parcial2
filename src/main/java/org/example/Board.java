@@ -23,7 +23,7 @@ public class Board {
         }
         System.out.println();
         for (int i = 0; i < 30; i++) {
-            System.out.print((i + 1) + " ");
+            System.out.print((i) + " ");
             for (int j = 0; j < 30; j++) {
                 System.out.print(board[i][j] + " ");
             }
@@ -102,5 +102,45 @@ public class Board {
         return true;
     }
 
+    public Ship getShipAt(Point shotPoint) {
+        if (board[shotPoint.getX()][shotPoint.getY()] >= 'A' && board[shotPoint.getX()][shotPoint.getY()] < 'A' + numShips) {
+            char shipChar = board[shotPoint.getX()][shotPoint.getY()];
+            Point startPoint = null;
+            Point endPoint = null;
+            CardinalPoints direction = null;
+            for (int i = 0; i < 30; i++) {
+                for (int j = 0; j < 30; j++) {
+                    if (board[i][j] == shipChar) {
+                        if (startPoint == null) {
+                            startPoint = new Point(i, j);
+                        } else {
+                            endPoint = new Point(i, j);
+                        }
+                    }
+                }
+            }
+            if (startPoint.getX() == endPoint.getX()) {
+                if (startPoint.getY() > endPoint.getY()) {
+                    direction = CardinalPoints.NORTH;
+                } else {
+                    direction = CardinalPoints.SOUTH;
+                }
+            } else {
+                if (startPoint.getX() > endPoint.getX()) {
+                    direction = CardinalPoints.WEST;
+                } else {
+                    direction = CardinalPoints.EAST;
+                }
+            }
+            if (shipChar == 'F') {
+                return new Frigate(startPoint, endPoint);
+            } else if (shipChar == 'B') {
+                return new Battleship(startPoint, endPoint);
+            } else if (shipChar == 'C') {
+                return new Canoe(startPoint, endPoint);
+            }
+        }
+        return null;
+    }
 }
 

@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.List;
 import java.util.Scanner;
 
 public abstract class Ship extends Point{
@@ -10,6 +11,8 @@ public abstract class Ship extends Point{
     private Point start;
     private Point end;
     private CardinalPoints direction;
+    private List<Point> positions;
+    private List<Point> occupiedPositions;
 
     public Ship(int size, Point start, Point end) {
         super(start.getX(), start.getY());
@@ -36,8 +39,9 @@ public abstract class Ship extends Point{
     }
 
     public boolean isSunk() {
-        return this.sunk;
+        return sunk;
     }
+
 
     public String getName() {
         return name;

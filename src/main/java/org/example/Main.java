@@ -42,30 +42,26 @@ public class Main {
             boolean hit = opponentBoard.attack(shotPoint);
             if (hit) {
                 System.out.println("¡Ha acertado en un barco enemigo!");
-
+                Ship hitShip = opponentBoard.getShipAt(shotPoint);
+                if (hitShip != null && hitShip.isSunk()) {
+                    System.out.println("¡Ha hundido un barco enemigo!");
+                }
                 if (opponentBoard.allShipsSunk()) {
                     System.out.println("¡Jugador " + currentPlayer + " ha ganado!");
                     gameOver = true;
                 }
             } else {
-                System.out.println("¡Agua!");
-
+                System.out.println("¡Ha fallado!");
             }
-            if (opponentBoard.allShipsSunk()) {
-                System.out.println("¡Jugador " + currentPlayer + " ha ganado!");
-                gameOver = true;
-            } else {
-                // Cambio de jugador
-                currentPlayer = (currentPlayer == 1) ? 2 : 1;
-            }
+            // Mostrar el tablero de los jugadores
+            System.out.println("Tablero del jugador 1:");
+            board1.printBoard();
+            System.out.println("Tablero del jugador 2:");
+            board2.printBoard();
+            // Cambiar de jugador
+            currentPlayer = (currentPlayer == 1) ? 2 : 1;
         }
-        scanner.close();
     }
-
-
-
-
-
 }
 
             /*System.out.print("Coordenada de fin (fila,columna): ");
