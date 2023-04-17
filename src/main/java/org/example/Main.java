@@ -33,7 +33,7 @@ public class Main {
             System.out.println("Jugador " + currentPlayer + ", es su turno.");
             //pide por teclado las coordenadas de ataque
             System.out.print("Ingrese las coordenadas de ataque (fila,columna): ");
-            Point shotPoint = new Point(scanner.nextInt() , scanner.nextInt() );
+            Point shotPoint = new Point(scanner.nextInt(), scanner.nextInt());
             int x = shotPoint.getX();
             int y = shotPoint.getY();
             System.out.println("Atacando en la posición " + x + "," + y + "...");
@@ -45,7 +45,6 @@ public class Main {
                 Ship hitShip = opponentBoard.getShipAt(shotPoint);
                 if (hitShip != null && hitShip.isSunk()) {
                     System.out.println("¡Ha hundido un barco enemigo!");
-                    hitShip.setSunk(true);
                 }
 
                 if (opponentBoard.allShipsSunk()) {
@@ -59,7 +58,7 @@ public class Main {
             // Imprime el tablero del jugador actual
             System.out.println("Tablero del rival:");
             currentBoard.printAtBoard();
-            if (opponentBoard.allShipsSunk()) {
+            if (!gameOver && currentBoard.allShipsSunk()) {
                 System.out.println("¡Jugador " + currentPlayer + " ha ganado!");
                 gameOver = true;
             } else {
