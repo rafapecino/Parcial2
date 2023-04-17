@@ -21,6 +21,11 @@ public class Canoe extends Ship{
         isolatedContainers = new boolean[1];
         Arrays.fill(isolatedContainers, false);
     }
+    public Canoe(Point startPoint, Point endPoint, String name) throws IllegalArgumentException {
+        super(1, startPoint, endPoint, name);
+        isolatedContainers = new boolean[1];
+        Arrays.fill(isolatedContainers, false);
+    }
 
     public boolean getShot(Point shotPoint) {
         boolean hit = super.getShot(shotPoint);

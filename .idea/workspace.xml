@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ebec33e2-a7f3-48c7-ba03-d204a3cfc40d" name="Changes" comment="CasiFinish">
+    <list default="true" id="ebec33e2-a7f3-48c7-ba03-d204a3cfc40d" name="Changes" comment="CasiFinish2.0">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/ShipRegistryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/UserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Battleship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Battleship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Canoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Canoe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Frigate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Frigate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Ship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UserTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +26,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -40,6 +48,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "last_opened_file_path": "C:/Users/rafap/OneDrive/Escritorio/Proyectos/AAEJercicios TEMAS/Parcial2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -52,7 +62,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.ShipRegistryTest.getShipByName">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Parcial2" />
@@ -66,9 +84,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShipRegistryTest.getShipByName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Parcial2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.ShipRegistryTest" />
+      <option name="METHOD_NAME" value="getShipByName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.attack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Parcial2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.UserTest" />
+      <option name="METHOD_NAME" value="attack" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ShipRegistryTest.getShipByName" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.UserTest.attack" />
       </list>
     </recent_temporary>
   </component>
@@ -83,7 +135,7 @@
       <workItem from="1680107804597" duration="3714000" />
       <workItem from="1681036731448" duration="36481000" />
       <workItem from="1681644134057" duration="34000" />
-      <workItem from="1681644186807" duration="10985000" />
+      <workItem from="1681644186807" duration="15351000" />
     </task>
     <task id="LOCAL-00001" summary="Provisional">
       <created>1681380076757</created>
@@ -106,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681744244811</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="CasiFinish2.0">
+      <created>1681748916791</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681748916791</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +186,7 @@
     <MESSAGE value="Provisional" />
     <MESSAGE value="Provisional2" />
     <MESSAGE value="CasiFinish" />
-    <option name="LAST_COMMIT_MESSAGE" value="CasiFinish" />
+    <MESSAGE value="CasiFinish2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="CasiFinish2.0" />
   </component>
 </project>

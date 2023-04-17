@@ -71,7 +71,7 @@ public class User {
         return sunkShips;
     }
 
-    public boolean attack(User user, Scanner scanner) throws Exception {
+    public boolean attack(User user, Point attack_point) throws Exception {
         if (!this.is_alive) {
             throw new Exception("El usuario ya está muerto");
         }
@@ -80,10 +80,7 @@ public class User {
         }
 
         // Solicitamos las coordenadas de ataque al usuario y las almacenamos en una variable Point
-        Point attack_point = new Point();
         System.out.print("Ingrese las coordenadas de ataque (fila,columna): ");
-        attack_point.setX(scanner.nextInt() - 1);
-        attack_point.setY(scanner.nextInt() - 1);
 
         // Verificamos si el punto de ataque ya fue utilizado anteriormente
         if (this.used_points.contains(attack_point)) {

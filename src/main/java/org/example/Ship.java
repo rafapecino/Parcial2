@@ -37,6 +37,31 @@ public abstract class Ship extends Point{
             throw new IllegalArgumentException("Ship must be horizontal or vertical");
         }
     }
+    //constructor con un nombre para los barcos
+    public Ship(int size, Point start, Point end, String name) {
+        super(start.getX(), start.getY());
+        this.size = size;
+        this.start = start;
+        this.end = end;
+        this.hits = 0;
+        this.sunk = false;
+        this.name = name;
+        if (start.getX() == end.getX()) {
+            if (start.getY() > end.getY()) {
+                this.direction = CardinalPoints.NORTH;
+            } else {
+                this.direction = CardinalPoints.SOUTH;
+            }
+        } else if (start.getY() == end.getY()) {
+            if (start.getX() > end.getX()) {
+                this.direction = CardinalPoints.WEST;
+            } else {
+                this.direction = CardinalPoints.EAST;
+            }
+        } else {
+            throw new IllegalArgumentException("Ship must be horizontal or vertical");
+        }
+    }
 
     public boolean isSunk() {
         if (hits >= size && !sunk) {

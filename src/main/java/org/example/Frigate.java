@@ -11,7 +11,11 @@ public class Frigate extends Ship {
             isolatedContainers = new boolean[3];
             Arrays.fill(isolatedContainers, false);
         }
-
+        public Frigate(Point startPoint, Point endPoint, String name){
+            super(3, startPoint, endPoint, name);
+            isolatedContainers = new boolean[3];
+            Arrays.fill(isolatedContainers, false);
+        }
         public boolean getShot(Point shotPoint) {
             boolean hit = super.getShot(shotPoint);
             if (hit) {

@@ -11,7 +11,16 @@ public class Battleship extends Ship {
         isolatedContainers = new boolean[5];
         Arrays.fill(isolatedContainers, false);
     }
-
+    public Battleship(Point startPoint, Point endPoint, String name){
+        super(5, startPoint, endPoint, name);
+        isolatedContainers = new boolean[5];
+        Arrays.fill(isolatedContainers, false);
+    }
+    public Battleship(Point startPoint, Point endPoint, String name, int size){
+        super(size, startPoint, endPoint, name);
+        isolatedContainers = new boolean[size];
+        Arrays.fill(isolatedContainers, false);
+    }
     public boolean getShot(Point shotPoint) {
         boolean hit = super.getShot(shotPoint);
         if (hit) {
