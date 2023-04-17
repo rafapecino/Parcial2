@@ -122,4 +122,6 @@ public class User {
     public void die() {
         this.is_alive = false;
     }
+
+
 }

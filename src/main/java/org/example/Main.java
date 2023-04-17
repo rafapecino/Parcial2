@@ -10,7 +10,6 @@ public class Main {
         Random random = new Random();
 
         System.out.println("¡Bienvenido al juego hundir la flota!");
-
         // Configuración del tablero y los barcos de los jugadores
         Board board1 = new Board();
         Board board2 = new Board();
@@ -18,7 +17,6 @@ public class Main {
         placeShips(scanner, board1);
         System.out.println("Jugador 2, coloque sus barcos:");
         placeShips(scanner, board2);
-
         // Mostrar el tablero de los jugadores
         System.out.println("Tablero del jugador 1:");
         board1.printBoard();
@@ -39,31 +37,39 @@ public class Main {
             int x = shotPoint.getX();
             int y = shotPoint.getY();
             System.out.println("Atacando en la posición " + x + "," + y + "...");
-            boolean hit = opponentBoard.attack(shotPoint);
+            boolean hit = currentBoard.attack(shotPoint);
             if (hit) {
                 System.out.println("¡Ha acertado en un barco enemigo!");
+
+                // Comprobar si el barco ha sido hundido
                 Ship hitShip = opponentBoard.getShipAt(shotPoint);
                 if (hitShip != null && hitShip.isSunk()) {
                     System.out.println("¡Ha hundido un barco enemigo!");
+                    hitShip.setSunk(true);
                 }
+
                 if (opponentBoard.allShipsSunk()) {
                     System.out.println("¡Jugador " + currentPlayer + " ha ganado!");
                     gameOver = true;
                 }
+
             } else {
-                System.out.println("¡Ha fallado!");
+                System.out.println("¡Agua!");
             }
-            // Mostrar el tablero de los jugadores
-            System.out.println("Tablero del jugador 1:");
-            board1.printBoard();
-            System.out.println("Tablero del jugador 2:");
-            board2.printBoard();
-            // Cambiar de jugador
-            currentPlayer = (currentPlayer == 1) ? 2 : 1;
+            // Imprime el tablero del jugador actual
+            System.out.println("Tablero del rival:");
+            currentBoard.printAtBoard();
+            if (opponentBoard.allShipsSunk()) {
+                System.out.println("¡Jugador " + currentPlayer + " ha ganado!");
+                gameOver = true;
+            } else {
+                // Cambio de jugador
+                currentPlayer = (currentPlayer == 1) ? 2 : 1;
+            }
         }
+        scanner.close();
     }
 }
-
             /*System.out.print("Coordenada de fin (fila,columna): ");
             int endX = scanner.nextInt();
             int endY = scanner.nextInt();

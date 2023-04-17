@@ -39,8 +39,16 @@ public abstract class Ship extends Point{
     }
 
     public boolean isSunk() {
+        if (hits >= size && !sunk) {
+            sunk = true;
+            System.out.println(name + " has been sunk!");
+        }
         return sunk;
     }
+    public void setSunk(boolean sunk) {
+        this.sunk = sunk;
+    }
+
 
 
     public String getName() {
@@ -135,15 +143,19 @@ public abstract class Ship extends Point{
             Point endPoint = new Point(endX, endY);
 
             Ship newShip;
+            String shipType;
             switch (size) {
                 case "1":
                     newShip = new Canoe(startPoint);
+                    shipType = "C";
                     break;
                 case "3":
                     newShip = new Frigate(startPoint, endPoint);
+                    shipType = "F";
                     break;
                 case "5":
                     newShip = new Battleship(startPoint, endPoint);
+                    shipType = "B";
                     break;
                 default:
                     throw new IllegalArgumentException("Tamaño de barco inválido, debe ser 1, 3 o 5.");
@@ -152,10 +164,10 @@ public abstract class Ship extends Point{
             boolean success = board.addShip(newShip);
             if (success) {
                 numShips++;
+                System.out.println("Barco #" + numShips + " colocado exitosamente: " + shipType);
             } else{
                 System.out.println("¡Error al colocar el barco! Inténtelo de nuevo.");
             }
         }
     }
-
 }

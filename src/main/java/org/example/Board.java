@@ -31,7 +31,24 @@ public class Board {
         }
     }
 
-
+    public void printAtBoard() {
+        System.out.print("  ");
+        for (int i = 0; i < 30; i++) {
+            System.out.print((char) (i + 65) + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < 30; i++) {
+            System.out.print((i) + " ");
+            for (int j = 0; j < 30; j++) {
+                if (board[i][j] == 'X' || board[i][j] == 'O') {
+                    System.out.print(board[i][j] + " ");
+                } else {
+                    System.out.print("- ");
+                }
+            }
+            System.out.println();
+        }
+    }
 
     public boolean attack(Point attackPoint) {
         if (board[attackPoint.getX()][attackPoint.getY()] >= 'A' && board[attackPoint.getX()][attackPoint.getY()] < 'A' + numShips) {
@@ -49,7 +66,7 @@ public class Board {
     public boolean allShipsSunk() {
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 30; j++) {
-                if (board[i][j] >= 'A' && board[i][j] < 'A' + numShips) {
+                if (board[i][j] == 'C' || board[i][j] == 'B' || board[i][j] == 'F') {
                     return false;
                 }
             }
@@ -57,9 +74,21 @@ public class Board {
         return true;
     }
 
+
+
     public boolean addShip(Ship newShip) {
         if (numShips >= 3) {
             return false;
+        }
+        char shipSymbol;
+        if (newShip instanceof Canoe) {
+            shipSymbol = 'C';
+        } else if (newShip instanceof Frigate) {
+            shipSymbol = 'F';
+        } else if (newShip instanceof Battleship) {
+            shipSymbol = 'B';
+        } else {
+            shipSymbol = '-';
         }
         if (newShip.getDirection() == CardinalPoints.NORTH) {
             for (int i = newShip.getStart().getY(); i >= newShip.getEnd().getY(); i--) {
@@ -68,7 +97,7 @@ public class Board {
                 }
             }
             for (int i = newShip.getStart().getY(); i >= newShip.getEnd().getY(); i--) {
-                board[newShip.getStart().getX()][i] = (char) ('A' + numShips);
+                board[newShip.getStart().getX()][i] = shipSymbol;
             }
         } else if (newShip.getDirection() == CardinalPoints.SOUTH) {
             for (int i = newShip.getStart().getY(); i <= newShip.getEnd().getY(); i++) {
@@ -77,7 +106,7 @@ public class Board {
                 }
             }
             for (int i = newShip.getStart().getY(); i <= newShip.getEnd().getY(); i++) {
-                board[newShip.getStart().getX()][i] = (char) ('A' + numShips);
+                board[newShip.getStart().getX()][i] = shipSymbol;
             }
         } else if (newShip.getDirection() == CardinalPoints.WEST) {
             for (int i = newShip.getStart().getX(); i >= newShip.getEnd().getX(); i--) {
@@ -86,7 +115,7 @@ public class Board {
                 }
             }
             for (int i = newShip.getStart().getX(); i >= newShip.getEnd().getX(); i--) {
-                board[i][newShip.getStart().getY()] = (char) ('A' + numShips);
+                board[i][newShip.getStart().getY()] = shipSymbol;
             }
         } else if (newShip.getDirection() == CardinalPoints.EAST) {
             for (int i = newShip.getStart().getX(); i <= newShip.getEnd().getX(); i++) {
@@ -95,12 +124,13 @@ public class Board {
                 }
             }
             for (int i = newShip.getStart().getX(); i <= newShip.getEnd().getX(); i++) {
-                board[i][newShip.getStart().getY()] = (char) ('A' + numShips);
+                board[i][newShip.getStart().getY()] = shipSymbol;
             }
         }
         numShips++;
         return true;
     }
+
 
     public Ship getShipAt(Point shotPoint) {
         if (board[shotPoint.getX()][shotPoint.getY()] >= 'A' && board[shotPoint.getX()][shotPoint.getY()] < 'A' + numShips) {
@@ -119,28 +149,31 @@ public class Board {
                     }
                 }
             }
-            if (startPoint.getX() == endPoint.getX()) {
-                if (startPoint.getY() > endPoint.getY()) {
-                    direction = CardinalPoints.NORTH;
+            if (startPoint != null && endPoint != null) { // Comprobación de nulidad
+                if (startPoint.getX() == endPoint.getX()) {
+                    if (startPoint.getY() > endPoint.getY()) {
+                        direction = CardinalPoints.NORTH;
+                    } else {
+                        direction = CardinalPoints.SOUTH;
+                    }
                 } else {
-                    direction = CardinalPoints.SOUTH;
+                    if (startPoint.getX() > endPoint.getX()) {
+                        direction = CardinalPoints.WEST;
+                    } else {
+                        direction = CardinalPoints.EAST;
+                    }
                 }
-            } else {
-                if (startPoint.getX() > endPoint.getX()) {
-                    direction = CardinalPoints.WEST;
-                } else {
-                    direction = CardinalPoints.EAST;
+                if (shipChar == 'F') {
+                    return new Frigate(startPoint, endPoint);
+                } else if (shipChar == 'B') {
+                    return new Battleship(startPoint, endPoint);
+                } else if (shipChar == 'C') {
+                    return new Canoe(startPoint, endPoint);
                 }
-            }
-            if (shipChar == 'F') {
-                return new Frigate(startPoint, endPoint);
-            } else if (shipChar == 'B') {
-                return new Battleship(startPoint, endPoint);
-            } else if (shipChar == 'C') {
-                return new Canoe(startPoint, endPoint);
             }
         }
         return null;
     }
+
 }
 
