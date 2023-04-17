@@ -1,4 +1,5 @@
 # Parcial2
+#https://github.com/rafapecino/Parcial2.git
 1-b) La identidad, Los atributos que representan su estado y los métodos que representan su comportamiento son los elementos que definen a un objeto.  
 2-b) El hecho de que un método pueda recibir un número variable de atributos se denomina Polimorfismo.  
 3-a) Cuando se crea un objeto de la clase C que hereda de la clase B y la clase B hereda de la clase A, primero se ejecuta el constructor de C, luego el constructor de B y, finalmente, el constructor de A.  
